@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 import logging
+import numpy as np
 
 
 class IndexHrScrape:
@@ -71,10 +72,14 @@ class IndexHrScrape:
         df.insert(loc=0, column='Id', value=df.index + 1)
 
         df['PriceEuro'] = df['PriceEuro'].str.replace('.', '').replace('0,00', 0).replace('', 0).astype('int64')
+        df = df[df['PriceEuro'].between(100, 2000)]
         df['PriceKuna'] = df['PriceKuna'].str.replace('.', '').replace('0,00', 0).replace('', 0).astype('int64')
         df['Area'] = df['Area'].replace('', 0).astype('int64')
-        df.insert(loc=6, column='CijenaKvadratEuro', value=round((df['PriceEuro']/df['Area']), 2))
-        df.insert(loc=7, column='CijenaKvadratKuna', value=round((df['PriceKuna'] / df['Area']), 2))
+        df = df[df['Area'].between(10, 300)]
+        df.insert(loc=6, column='CijenaKvadratEuro', value=df['PriceEuro']/df['Area'])
+        df.insert(loc=7, column='CijenaKvadratKuna', value=df['PriceKuna'] / df['Area'])
+        df['CijenaKvadratEuro'] = np.array(df['CijenaKvadratEuro'], np.int16)
+        df['CijenaKvadratKuna'] = np.array(df['CijenaKvadratKuna'], np.int16)
 
-        logging.info('Podatci s Index.hr oglasnika konvertirani u dataFrame')
+        logging.info('Podatci s Index.hr oglasnika konvertirani u DataFrame')
         return df
