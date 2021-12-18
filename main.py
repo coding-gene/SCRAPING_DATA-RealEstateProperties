@@ -23,9 +23,8 @@ try:
     pg_insert_data = pg.insert_data(df)
 
 except Exception:
-    pg.rollback_connections()
     logging.exception('Dogodila se greška sljedećeg sadržaja:')
-
+    pg.rollback_connections()
 else:
     pg.commit_connections()
     logging.info('Uspješno izvršen zadatak.')
