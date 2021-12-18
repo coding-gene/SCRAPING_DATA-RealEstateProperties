@@ -37,6 +37,7 @@ class PgProcessing:
                     Link VARCHAR(500) NULL,
                     Photo VARCHAR(500) NULL);
             """)
+        logging.info(f'Kreirana nova tablica IndexHrApartments na Postgresql bazi.')
 
     def insert_data(self, df):
 
