@@ -1,0 +1,10 @@
+{
+    "pg":
+    {
+        "host": "localhost",
+        "port": "5432",
+        "username": "postgres",
+        "password": "m0jk0v3l1",
+        "database": "DataEngineeringProjects"
+    }
+}
