@@ -9,7 +9,11 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 try:
     pocetak = time.time()
-    logging.basicConfig(format='%(asctime)s %(levelname)-8s %(message)s', level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S')
+    logging.basicConfig(filename='realEstateLogs.txt',
+                        filemode='a',
+                        format='%(asctime)s %(levelname)-8s %(message)s',
+                        level=logging.INFO,
+                        datefmt='%Y-%m-%d %H:%M:%S')
     logging.info('Početak izvršavanja zadatka.')
 
     envVar = get_environment_variables()
@@ -30,6 +34,5 @@ else:
     logging.info('Uspješno izvršen zadatak.')
 finally:
     pg.closing_connections()
-    logging.info(f'Obrada trajala: {time.strftime("%H sati, %M minuta i %S sekundi.", time.gmtime(time.time() - pocetak))}')
-
-
+    logging.info(f'Obrada trajala: {time.strftime("%H sati, %M minuta i %S sekundi.", time.gmtime(time.time() - pocetak))}\n')
+    #logging.info('\n')
