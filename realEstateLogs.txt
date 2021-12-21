@@ -1,9 +1,0 @@
-2021-12-20 09:52:04 INFO     Poèetak izvršavanja zadatka.
-2021-12-20 09:52:12 INFO     Uredno povuèeni podatci s Index.hr oglasnika za izjanmljivanje stanova
-2021-12-20 09:52:12 INFO     Podatci s Index.hr oglasnika konvertirani u DataFrame
-2021-12-20 09:52:12 INFO     Kreirana nova tablica IndexHrApartments na Postgresql bazi.
-2021-12-20 09:52:13 INFO     Podatci s Index.hr oglasnika uredno zapisani u bazu [commit ok].
-2021-12-20 09:52:13 INFO     Uspješno izvršen zadatak.
-2021-12-20 09:52:13 INFO     Zatvorena konekcije prema Postgresql Serveru.
-2021-12-20 09:52:13 INFO     Obrada trajala: 00 sati, 00 minuta i 08 sekundi.
-
