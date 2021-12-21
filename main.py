@@ -9,7 +9,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 try:
     pocetak = time.time()
-    logging.basicConfig(filename='realEstateLogs.txt',
+    logging.basicConfig(filename='Logs.txt',
                         filemode='a',
                         format='%(asctime)s %(levelname)-8s %(message)s',
                         level=logging.INFO,
