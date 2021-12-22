@@ -7,11 +7,13 @@ import numpy as np
 
 class IndexHrScrape:
 
+    def __init__(self, env):
+        self.url = env.get('url')
+
     def get_page_content(self, pages):
         _list_page_content = []
         for page in range(1, pages):
-            url = f'https://www.index.hr/oglasi/najam-stanova/gid/3279?pojamZup=-2&tipoglasa=1&sortby=1&elementsNum=' \
-                  f'100&grad=0&naselje=0&cijenaod=0&cijenado=370000&vezani_na=988-887_562-563_978-1334&num={page}'
+            url = f'{self.url}{page}'
             r = requests.get(url=url)
             soup = BeautifulSoup(r.content, 'html.parser')
             apartments = soup.find_all('div', {'class': 'OglasiRezHolder'})

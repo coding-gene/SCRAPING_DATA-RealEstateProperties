@@ -17,7 +17,7 @@ try:
     logging.info('Početak izvršavanja zadatka.')
 
     envVar = get_environment_variables()
-    scrape = IndexHrScrape()
+    scrape = IndexHrScrape(envVar.get('page'))
     pg = PgProcessing(envVar.get('pg'))
 
     list_page_content = scrape.get_page_content(15)
