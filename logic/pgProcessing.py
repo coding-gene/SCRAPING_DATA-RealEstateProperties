@@ -1,5 +1,6 @@
 import psycopg2
 import logging
+from datetime import datetime
 
 
 class PgProcessing:
@@ -25,15 +26,14 @@ class PgProcessing:
         self.cursor.execute(
             """
                 CREATE TABLE IF NOT EXISTS real_estate_properrties.IndexHrApartments 
-                    (id INT PRIMARY KEY NOT NULL,
-                    Title VARCHAR(1000) NULL,
+                    (Title VARCHAR(1000) PRIMARY KEY NOT NULL,
                     Location VARCHAR(50) NULL,
                     PriceEuro INT NULL,
                     PriceKuna INT NULL,
                     Area INT NULL,
                     cijenakvadrateuro DECIMAL NULL,
                     cijenakvadratkuna DECIMAL NULL,
-                    Posted VARCHAR(100) NULL,
+                    InsertDate VARCHAR(100) NULL,
                     Link VARCHAR(500) NULL,
                     Photo VARCHAR(500) NULL);
             """)
@@ -45,7 +45,6 @@ class PgProcessing:
             self.cursor.execute(
                 """
                     INSERT INTO real_estate_properrties.IndexHrApartments(
-                        id,
                         title,
                         location,
                         priceeuro,
@@ -53,21 +52,20 @@ class PgProcessing:
                         area,
                         cijenakvadrateuro,
                         cijenakvadratkuna,
-                        posted,
+                        insertdate,
                         link,
                         photo)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                     ON CONFLICT DO NOTHING;
                 """,
-                        (row.Id,
-                         row.Title,
+                        (row.Title.upper(),
                          row.Location,
                          row.PriceEuro,
                          row.PriceKuna,
                          row.Area,
                          row.CijenaKvadratEuro,
                          row.CijenaKvadratKuna,
-                         row.Posted,
+                         datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                          row.Link,
                          row.Photo,))
 
