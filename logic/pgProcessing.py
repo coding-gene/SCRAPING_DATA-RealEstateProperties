@@ -56,7 +56,14 @@ class PgProcessing:
                         link,
                         photo)
                     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-                    ON CONFLICT DO NOTHING;
+                    ON CONFLICT (title)
+                    DO UPDATE SET
+                                location=EXCLUDED.location, 
+                                priceeuro=EXCLUDED.priceeuro, 
+                                pricekuna=EXCLUDED.pricekuna, 
+                                area=EXCLUDED.area,
+                                cijenakvadrateuro=EXCLUDED.cijenakvadrateuro,
+                                cijenakvadratkuna=EXCLUDED.cijenakvadratkuna;
                 """,
                         (row.Title.upper(),
                          row.Location,
