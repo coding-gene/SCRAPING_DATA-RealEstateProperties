@@ -20,7 +20,7 @@ try:
     scrape = IndexHrScrape(envVar.get('page'))
     pg = PgProcessing(envVar.get('pg'))
 
-    list_page_content = scrape.get_page_content(2)
+    list_page_content = scrape.get_page_content(15)
     df = scrape.get_df(list_page_content)
     df.to_csv(r'jupyter\index_apartments.csv', index=False)
     pg_create_table = pg.create_table()
