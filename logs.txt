@@ -1,8 +1,0 @@
-2022-01-09 19:16:56 INFO     Poèetak izvršavanja zadatka.
-2022-01-09 19:16:56 ERROR    Dogodila se greška sljedeæeg sadržaja:
-Traceback (most recent call last):
-  File "main.py", line 19, in <module>
-    envVar = get_environment_variables()
-  File "C:\Users\Ivan\PycharmProjects\SCRAPING-RealEstateProperties\logic\config.py", line 5, in get_environment_variables
-    with open(r'C:\Users\Ivan\PycharmProjects\realEstateProperties\env.json', 'r') as content:
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Ivan\\PycharmProjects\\realEstateProperties\\env.json'
