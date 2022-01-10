@@ -35,4 +35,3 @@ else:
 finally:
     pg.closing_connections()
     logging.info(f'Obrada trajala: {time.strftime("%H sati, %M minuta i %S sekundi.", time.gmtime(time.time() - pocetak))}\n')
-    #logging.info('\n')
